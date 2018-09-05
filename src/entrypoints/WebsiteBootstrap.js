@@ -99,6 +99,7 @@ window.r20es.onAppLoad.fire = function () {
 
 window.r20es.onAppLoad.addEventListener = function (fx) {
     window.r20es.onAppLoad.listeners.push(fx);
+    console.log(`pushing listener ${window.r20es.onAppLoad.listeners.length} ${fx}`);
 }
 
 window.r20es.onAppLoad.removeEventListener = function (fx) {
@@ -107,12 +108,15 @@ window.r20es.onAppLoad.removeEventListener = function (fx) {
     while (idx-- > 0) {
         let cur = window.r20es.onAppLoad.listeners[idx];
         if (cur === fx) {
-            window.r20es.onAppLoad.listeners.splice(cur, 1);
+            console.trace();
+            console.log(`REMOVING EVENT LISTENER AT INDEX ${idx}: ${cur}`);
+            window.r20es.onAppLoad.listeners.splice(idx, 1);
         }
     }
 }
 
 function setIsLoadingToFalse() {
+    console.log("Set isLoading to false");
     window.r20es.isLoading = false;
 }
 
